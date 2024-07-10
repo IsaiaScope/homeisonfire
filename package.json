@@ -1,0 +1,17 @@
+{
+	"name": "homeisonfire",
+	"scripts": {
+		"backend:dev": "tsx --no-warnings --watch --watch-preserve-output backend/server.ts",
+		"frontend:dev": "pnpm --filter frontend run dev",
+		"dev": "concurrently \"pnpm run backend:dev\" \"pnpm run frontend:dev\""
+	},
+	"dependencies": {
+		"@hono/node-server": "^1.12.0",
+		"hono": "^4.4.12"
+	},
+	"devDependencies": {
+		"@types/node": "^20.11.17",
+		"concurrently": "^8.2.2",
+		"tsx": "^4.7.1"
+	}
+}
