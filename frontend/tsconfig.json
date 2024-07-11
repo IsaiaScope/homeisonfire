@@ -7,5 +7,11 @@
     {
       "path": "./tsconfig.node.json"
     }
-  ]
+  ],
+  "compilerOptions": {
+    "paths": {
+      // shadcn read just `tsconfig.json` so we need to add it here for components.json
+      "@shadcn": ["./src/components/shadcn"]
+    }
+  }
 }

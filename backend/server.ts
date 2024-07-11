@@ -5,15 +5,14 @@ import { eventsRoute } from './routes/eventsRoute';
 
 const app = new Hono()
 const port = 3000
-console.log(`🧊 ~ port: `, port);
 
 app.use("*", logger())
 
-app.route('/events', eventsRoute)
+app.route('/', eventsRoute)
 
 
 
-console.log(`Server is running on port ${port}`)
+console.log(`[BE] is running on port ${port}`)
 
 serve({
   fetch: app.fetch, 
