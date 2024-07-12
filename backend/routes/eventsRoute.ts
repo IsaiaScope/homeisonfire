@@ -49,19 +49,19 @@ export const createEventSchema = eventSchema.omit({ id: true });
 export type Event = z.infer<typeof eventSchema>;
 
 export const eventsRoute = new Hono()
-	.basePath('/events')
+	.basePath('/api/events')
 	.get('/', async c => {
 		return c.json({ message: 'Hello from events' });
 	})
-	.post('/', zValidator('json', createEventSchema), c => {
-		const data = c.req.valid('json');
-		return c.json({ data });
-	})
-	.get('/:id{[0-9]+}', c => {
-		const id = c.req.param('id');
-		const event = EVENTS.find(e => e.id === +id);
-		if (!event) {
-			return c.notFound();
-		}
-		return c.json({ event });
-	});
+	// .post('/', zValidator('json', createEventSchema), c => {
+	// 	const data = c.req.valid('json');
+	// 	return c.json({ data });
+	// })
+	// .get('/:id{[0-9]+}', c => {
+	// 	const id = c.req.param('id');
+	// 	const event = EVENTS.find(e => e.id === +id);
+	// 	if (!event) {
+	// 		return c.notFound();
+	// 	}
+	// 	return c.json({ event });
+	// });

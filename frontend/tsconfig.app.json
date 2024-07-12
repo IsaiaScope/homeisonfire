@@ -31,5 +31,5 @@
       // "@u-style/*": ["./src/utility/style/*"],
     }
   },
-  "include": ["src", "./tailwind.config.ts"]
+  "include": ["src"]
 }
