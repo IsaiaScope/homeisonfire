@@ -22,11 +22,14 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
       "@cn": ["./src/utility/style/twMerge-clsx-utility-class.ts"],
       // this alias is for the shared components import correct into components/shadcn folder
       "@shadcn/*": ["./src/components/shadcn/*"],
+      "@backend/*": ["../backend/*"],
+      "@api": ["./src/utility/api/api.ts"]
       // "@ui/*": ["./src/components/ui/*"],
       // "@u-style/*": ["./src/utility/style/*"],
     }

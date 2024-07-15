@@ -10,7 +10,8 @@ const port = 3000
 
 app.use("*", logger())
 
-app.route('/', eventsRoute)
+const apiRoute = app.basePath('/api').route('/events', eventsRoute)
+// .route('ciao', ()=> {})
 
 app.use('*', serveStatic({ root: './frontend/dist' }))
 // Serve index.html for all routes
@@ -23,4 +24,6 @@ serve({
   port  
 })
 
+export default app
+export type ApiRoute = typeof apiRoute
 

@@ -27,21 +27,21 @@ const EVENTS = [
 export const eventSchema = z.object({
 	id: z.number(),
 	name: z.string(),
-	description: z.string(),
-	date: z.string(),
-	author: z.string(),
-	imgs: z.array(z.string()).optional(),
-	comments: z.array(
-		z.object({
-			id: z.number(),
-			text: z.string(),
-			date: z.string(),
-			author: z.string(),
-			likes: z.number(),
-			imgs: z.array(z.string()),
-		})
-	),
-	commentsNumber: z.number(),
+	// description: z.string(),
+	// date: z.string(),
+	// author: z.string(),
+	// imgs: z.array(z.string()).optional(),
+	// comments: z.array(
+	// 	z.object({
+	// 		id: z.number(),
+	// 		text: z.string(),
+	// 		date: z.string(),
+	// 		author: z.string(),
+	// 		likes: z.number(),
+	// 		imgs: z.array(z.string()),
+	// 	})
+	// ),
+	// commentsNumber: z.number(),
 });
 
 export const createEventSchema = eventSchema.omit({ id: true });
@@ -49,14 +49,13 @@ export const createEventSchema = eventSchema.omit({ id: true });
 export type Event = z.infer<typeof eventSchema>;
 
 export const eventsRoute = new Hono()
-	.basePath('/api/events')
-	.get('/', async c => {
-		return c.json({ message: 'Hello from events' });
-	})
-	// .post('/', zValidator('json', createEventSchema), c => {
-	// 	const data = c.req.valid('json');
-	// 	return c.json({ data });
+	// .get('/', async c => {
+	// 	return c.json({ message: 'Hello from events' });
 	// })
+	.post('/data', zValidator('json', createEventSchema), c => {
+		const data = c.req.valid('json');
+		return c.json({ data });
+	})
 	// .get('/:id{[0-9]+}', c => {
 	// 	const id = c.req.param('id');
 	// 	const event = EVENTS.find(e => e.id === +id);
